@@ -58,15 +58,21 @@ $clarifitIRColGroup = (function(){
     
     // retrieve the Interactive report table
     var vTbl = apex.jQuery('.a-IRR-table');
-    
+	//apex.jQuery.console.log(vTbl);
+	
     if (vTbl.length != 0) {
 		// Prevent Duplicate rows
+		//apex.jQuery.console.log(pOptions.irColGroupRowId);
 		apex.jQuery('#' + pOptions.irColGroupRowId).remove();
 
 		// Add the Column Group row
+		//apex.jQuery.console.log(vTbl[0].rows[0]);
+
 		apex.jQuery(vTbl[0].rows[0]).before('<tr id="' + pOptions.irColGroupRowId + '"></tr>');
+		//apex.jQuery.console.log('added');
 	
 		var vIRColGrpRow = apex.jQuery('#' + pOptions.irColGroupRowId);
+		//apex.jQuery.console.log(vIRColGrpRow);
 		var vPrevColGrp = '';
 		var vColGrpExists = false;
 		var vColSpan = 1;
@@ -85,6 +91,8 @@ $clarifitIRColGroup = (function(){
 		
 			// Find the ID in the IR Groups global variable (genereated in AP)
 			for (var j = 0; j < pColGrps.columns.length; j ++ ){
+			  //apex.jQuery.console.log('check this:',vColId);	
+			  //apex.jQuery.console.log(pColGrps.columns[j]);	
 			  if (pColGrps.columns[j].column_alias.toUpperCase() == vColId) {
 				vColGrpExists = true;
 				vColGrp = pColGrps.columns[j].column_group;
